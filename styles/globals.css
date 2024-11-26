@@ -2,20 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face { 
+  font-family: 'baishakh';
+  src: url('/fonts/baishakh.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face { 
+  font-family: 'banglaborno';
+  src: url('/fonts/banglaborno.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face { 
+  font-family: 'chainateesa';
+  src: url('/fonts/chainateesa.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'deyalika';
+  src: url('/fonts/deyalika.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'hostoshoily';
+  src: url('/fonts/hostoshoily.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'ichamati';
+  src: url('/fonts/ichamati.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'indibangla';
+  src: url('/fonts/indibangla.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+@font-face { 
+  font-family: 'jmakash';
+  src: url('/fonts/jmakash.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'lipishree';
+  src: url('/fonts/lipishree.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+@font-face { 
+  font-family: 'madina';
+  src: url('/fonts/madina.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'mainaksign';
+  src: url('/fonts/mainaksign.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+@font-face { 
+  font-family: 'nakatra';
+  src: url('/fonts/nakatra.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'shaluk';
+  src: url('/fonts/shaluk.ttf') format('truetype'); 
+  font-weight: normal; font-style: normal; 
 }
