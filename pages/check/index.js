@@ -1,9 +1,8 @@
-'use client'
+import banglaFonts from '@/utils/fonts'
 import React, { useState } from 'react'
-import banglaFonts from '../utils/fonts'
 
 export default function Check() {
-  const [bnFontName, setBnFontName] = useState('font-indibangla')
+  const [bnFontName, setBnFontName] = useState('font-deyalika')
   return (
     <div>
       <div
