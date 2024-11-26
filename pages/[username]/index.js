@@ -1,4 +1,5 @@
 import banglaFonts from '@/utils/fonts'
+import Link from 'next/link';
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { CiUser } from 'react-icons/ci'
@@ -15,20 +16,63 @@ export default function SendMail() {
       <div
         className='md:w-1/2 mx-auto space-y-5'
       >
-      <div
-        className='flex items-end space-x-2'
-      >
         <div
-          className='w-16 h-16 p-4 flex justify-center items-center bg-purple-300 rounded-full'
+          className='flex items-end space-x-2'
         >
-          <CiUser size={40} />
+          <div
+            className='w-16 h-16 p-4 flex justify-center items-center bg-purple-300 rounded-full'
+          >
+            <CiUser size={40} />
+          </div>
+          <div>
+            <p className='font-bold'>@{username}</p>
+            <p className='text-sm text-gray-500'>বেনামি চিঠি পাঠান!</p>
+          </div>
         </div>
-        <div>
-          <p className='font-bold'>@{username}</p>
-          <p className='text-sm text-gray-500'>বেনামি চিঠি পাঠান!</p>
+        <div
+          className='flex flex-wrap gap-2'
+        >
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-baishakh'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-banglaborno'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-chainateesa'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-deyalika'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-hostoshoily'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-ichamati'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-indibangla'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-jmakash'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-lipishree'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-madina'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-mainaksign'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-nakatra'>
+            চিঠি
+          </button>
+          <button className='w-16 h-16 bg-white text-xl rounded-full font-shaluk'>
+            চিঠি
+          </button>
         </div>
-      </div>
-      <div className='flex flex-wrap justify-stretch gap-2'>
+        {/* <div className='flex flex-wrap justify-stretch gap-2'>
         {banglaFonts.map((font, index) => (
           <button
             key={index}
@@ -37,25 +81,28 @@ export default function SendMail() {
             চিঠি
           </button>
         ))}
-      </div>
-      <div
-        className='relative h-48 w-full'
-      >
-        <textarea
-          className={`absolute z-10 resize-none h-48 w-full p-8 ${selectFont}`}
+      </div> */}
+        <div
+          className='relative h-48 w-full'
         >
+          <textarea
+            className={`absolute z-10 resize-none h-48 w-full p-8 ${selectFont}`}
+          >
 
-        </textarea>
-      </div>
+          </textarea>
+        </div>
         <div
           className='flex justify-end'
         >
-        <button
-          className='flex items-center space-x-1 p-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm rounded-lg shadow-lg shadow-purple-500'
-        >
-        <IoIosHeart/>
-          <span>চিঠি পাঠাও</span>
-        </button>
+          <Link href={`/${username}/sent`}>
+            <button
+              className='flex items-center space-x-1 p-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm rounded-lg shadow-lg shadow-purple-500'
+            >
+              <IoIosHeart />
+              <span>চিঠি পাঠাও</span>
+            </button>
+          </Link>
+
         </div>
       </div>
     </div>
