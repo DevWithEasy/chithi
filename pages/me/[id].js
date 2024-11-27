@@ -36,7 +36,7 @@ export default function Profile({mails}) {
             {
                 tab === 0 ?
                 <Share/> :
-                <MailBox/> 
+                <MailBox mails={mails}/> 
             }
         </div>
         </div>

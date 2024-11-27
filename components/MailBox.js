@@ -3,13 +3,9 @@ import { IoSearchOutline } from "react-icons/io5";
 import ReadMail from './ReadMail';
 import UnreadMail from './UnreadMail';
 
-export default function MailBox() {
+export default function MailBox({mails}) {
   const [search,setSearch] = useState('')
-  const mails = [
-    { id: 1, read : true, from: 'John Doe', subject: 'Meeting Reminder', content: "আপনার দুর্বলতাকে শক্তিতে পরিণত করার ক্ষমতা একমাত্র আল্লাহ্ তা'আলা-ই রাখেন। তাই তাঁর কাছেই প্রার্থনা করুন। -ড. বিলাল ফিলিপ্স" },
-    { id: 2, read : false, from: 'Jane Smith', subject: 'New Product Launch', content: "আপনার দুর্বলতাকে শক্তিতে পরিণত করার ক্ষমতা একমাত্র আল্লাহ্ তা'আলা-ই রাখেন। তাই তাঁর কাছেই প্রার্থনা করুন। -ড. বিলাল ফিলিপ্স" },
-    { id: 3, read : true, from: 'Bob Johnson', subject: 'Important Document', content: "আপনার দুর্বলতাকে শক্তিতে পরিণত করার ক্ষমতা একমাত্র আল্লাহ্ তা'আলা-ই রাখেন। তাই তাঁর কাছেই প্রার্থনা করুন। -ড. বিলাল ফিলিপ্স" },
-  ]
+  
   
   return (
     <div
@@ -30,9 +26,9 @@ export default function MailBox() {
       >
           {
             mails.map(mail => (
-              mail.read ? 
-              <ReadMail key={mail.id} mail={mail}/> : 
-              <UnreadMail key={mail.id} mail={mail}/> 
+              mail.seen ? 
+              <ReadMail key={mail._id} mail={mail}/> : 
+              <UnreadMail key={mail._id} mail={mail}/> 
             ))
           }
       </div>

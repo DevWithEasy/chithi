@@ -17,7 +17,10 @@ const mailSchema = mongoose.Schema({
         type : Number,
         required :true
     },
-
+    seen : {
+        type : Boolean,
+        default : false
+    }
 },{
     timestamps:true
 })
