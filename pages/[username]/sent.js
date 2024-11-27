@@ -7,7 +7,7 @@ export default function Sent() {
       className='h-screen p-4 flex justify-center items-center overflow-y-auto bg-gradient-to-t from-purple-100 to-purple-200 font-baishakh'
     >
         <div
-            className='w-full md:w-1/2 flex flex-col items-center space-y-5'
+            className='w-full md:w-5/12 flex flex-col items-center space-y-5'
         >
             <div
                 className='h-16 w-16 flex justify-center items-center rounded-full bg-emerald-400 text-white shadow-lg'

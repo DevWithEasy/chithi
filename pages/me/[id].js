@@ -1,11 +1,14 @@
 import MailBox from '@/components/MailBox'
 import Share from '@/components/Share'
+import shareApi from '@/utils/shareApi'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function Prodile() {
+export default function Profile({mails}) {
   const [tab,setTab] = useState(0)
   const router = useRouter()
+  console.log(mails)
   return (
     <div
         className='h-screen font-baishakh bg-gray-50'
@@ -37,7 +40,26 @@ export default function Prodile() {
             }
         </div>
         </div>
-        
     </div>
   )
 }
+
+export async function getServerSideProps(context) {
+    const { id } = context.params
+    console.log(id)
+    try {
+      const { data } = await axios.get(`${shareApi}api/mail/${id}`)
+      return {
+        props: {
+          mails: data,
+        },
+      };
+    } catch (error) {
+      console.error('Error fetching products:', error.response ? error.response.data : error.message);
+      return {
+        props: {
+            mails: [],
+        },
+      };
+    }
+  }
