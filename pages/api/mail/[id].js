@@ -1,6 +1,9 @@
-export default function handler(req, res) {
+import Mail from "@/database/models/mail"
+
+export default async function handler(req, res) {
     try {
-        res.status(200).json({ name: "John Doe" });
+        const {id} = req.query
+        const mails = await Mail.find(is)
     } catch (error) {
         
     }

@@ -26,7 +26,9 @@ export default function SendMail({ data }) {
           font: selectFont
         }
       )
-      // router.push(`/${data?.user?.username}/sent`)
+      if(response.data.success){
+        router.push(`/${data?.user?.username}/sent`)
+      }
     } catch (error) {
       console.log(error)
     }
