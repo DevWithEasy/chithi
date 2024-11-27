@@ -22,7 +22,7 @@ export default function Sent() {
             <p
                 className='w-full text-gray-700'
             >
-                <b className='text-xl text-purple-500'>চিঠি</b> অনেক ফ্রন্ট ও থিম সম্বলিত <span className='underline'>পরিচয় ছাড়া</span> চিঠি পাঠানোর একটি বিশ্বস্ত এপ্স। পরিচয় লুকিয়ে চিঠি লিখুন মন খুলে।
+                <b className='text-xl text-purple-500'>চিঠি পাঠাও</b> অনেক ফ্রন্ট ও থিম সম্বলিত <span className='underline'>পরিচয় ছাড়া</span> চিঠি পাঠানোর একটি বিশ্বস্ত এপ্স। পরিচয় লুকিয়ে চিঠি লিখুন মন খুলে।
             </p>
         </div>
     </div>

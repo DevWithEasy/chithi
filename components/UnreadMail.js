@@ -3,9 +3,10 @@ import React from 'react'
 import { IoMailUnread } from 'react-icons/io5'
 
 export default function UnreadMail() {
+    
   return (
     <Link
-        href={``}
+        href={`/me/mail/1`}
     >
         <div
         className='flex items-center space-x-2 rounded-lg px-4 py-2 mb-2 bg-gradient-to-l from-purple-200 to-purple-400 text-white cursor-pointer'

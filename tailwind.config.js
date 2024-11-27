@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage : {
+        'design_1' : "url('/images/design_1.png')",
+        'design_2' : "url('/images/design_2.png')",
+        'design_3' : "url('/images/design_3.png')"
+      },
       fontFamily : {
         baishakh: ['baishakh', 'sans-serif'],
         banglaborno: ['banglaborno', 'sans-serif'],

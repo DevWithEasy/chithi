@@ -1,17 +1,19 @@
 import MailBox from '@/components/MailBox'
 import Share from '@/components/Share'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function Prodile() {
   const [tab,setTab] = useState(0)
   const router = useRouter()
-  console.log(router.query.id)
   return (
     <div
         className='h-screen font-baishakh bg-gray-50'
     >
         <div
+            className='md:w-5/12 mx-auto'
+        >
+            <div
             className='flex'
         >
             <button
@@ -34,6 +36,8 @@ export default function Prodile() {
                 <MailBox/> 
             }
         </div>
+        </div>
+        
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
-import { IoMailUnreadOutline  } from "react-icons/io5";
 import ReadMail from './ReadMail';
 import UnreadMail from './UnreadMail';
 
@@ -11,9 +10,10 @@ export default function MailBox() {
     { id: 2, read : false, from: 'Jane Smith', subject: 'New Product Launch', content: "আপনার দুর্বলতাকে শক্তিতে পরিণত করার ক্ষমতা একমাত্র আল্লাহ্ তা'আলা-ই রাখেন। তাই তাঁর কাছেই প্রার্থনা করুন। -ড. বিলাল ফিলিপ্স" },
     { id: 3, read : true, from: 'Bob Johnson', subject: 'Important Document', content: "আপনার দুর্বলতাকে শক্তিতে পরিণত করার ক্ষমতা একমাত্র আল্লাহ্ তা'আলা-ই রাখেন। তাই তাঁর কাছেই প্রার্থনা করুন। -ড. বিলাল ফিলিপ্স" },
   ]
+  
   return (
     <div
-      className='p-4 space-y-5'
+      className='p-4 md:px-0 md:pt-4 space-y-5'
     >
       <div
         className='flex items-center space-x-2 bg-white px-2 rounded-lg border border-gray-100'

@@ -2,12 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { SlSocialFacebook } from "react-icons/sl";
 import { IoMailOpenOutline } from "react-icons/io5";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div
       className="h-screen flex justify-center items-center bg-black text-white font-baishakh"
     >
+      <Head>
+        <title>Chithi-pathao - পরিচয়বিহীন চিঠি</title>
+      </Head>
       <div
         className="flex flex-col items-center space-y-6"
       >
@@ -21,7 +25,7 @@ export default function Home() {
             height={40}
           />
         </div>
-        <h1 className="pt-4 text-4xl">চিঠি দিও</h1>
+        <h1 className="pt-4 text-4xl">চিঠি পাঠাও</h1>
         <p className="text-gray-200">তোমার বন্ধুদের কাছ থেকে বেনামী চিঠি গ্রহন কর</p>
         <div
           className="flex items-center space-x-4"
