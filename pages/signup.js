@@ -38,7 +38,7 @@ export default function Signup() {
 
     return (
         <div
-            className='h-screen p-4 flex justify-center items-center font-baishakh bg-gray-100'
+            className='h-screen p-4 flex justify-center items-center overflow-y-auto bg-gradient-to-t from-purple-200 to-purple-300 shadow-lg shadow-purple-500 font-baishakh'
         >
             <div
                 className='w-full md:w-1/2 p-4 bg-white rounded-lg space-y-4'
