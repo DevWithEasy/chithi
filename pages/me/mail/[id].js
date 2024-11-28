@@ -39,7 +39,7 @@ export async function getServerSideProps(context) {
     const { id } = context.params
     console.log(id)
     try {
-      const { data } = await axios.get(`${shareApi}/api/mail/update/${id}`)
+      const { data } = await axios.put(`${shareApi}/api/mail/${id}`)
       return {
         props: {
           mail: data,

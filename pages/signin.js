@@ -18,7 +18,6 @@ export default function Signin() {
         if (!username || !password) return
         try {
             const { data } = await axios.post(`${shareApi}/api/user/signin`, { username, password })
-            console.log(data)
             if(data.success){
                 Cookies.set('authToken', data.token, { expires: 1 });
                 loged(data.data)

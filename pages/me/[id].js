@@ -9,12 +9,12 @@ import { useEffect, useState } from 'react'
 
 export default function Profile({ info }) {
   const [tab, setTab] = useState(0)
-  const [mails, setMails] = useState([])
+  const [mails, setMails] = useState(info.mails)
   const { user } = appStore()
 
   const fetchMails = async () => {
     try {
-      const { data } = await axios.get(`${shareApi}/api/mail/${info._id}`)
+      const { data } = await axios.get(`${shareApi}/api/mail/me/${info.user._id}`)
       setMails(data)
     } catch (error) {
       console.error('Error fetching mails:', error.response ? error.response.data : error.message);
@@ -24,17 +24,19 @@ export default function Profile({ info }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
-    }, 5000)
+    }, 1000*60)
 
     return () => clearInterval(intervalId)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  console.log(mails)
   return (
     <div
-      className='h-screen font-baishakh'
+      className='h-screen overflow-y-auto font-baishakh'
     >
       <Head>
-        <title>{`@${user.username} - চিঠিবক্স`}</title>
+        <title>{`@${info.user.username} - চিঠিবক্স`}</title>
       </Head>
       <div
         className='md:w-5/12 mx-auto'
@@ -69,9 +71,9 @@ export default function Profile({ info }) {
 
 export async function getServerSideProps(context) {
   const { id } = context.params
-  console.log(id)
   try {
-    const { data } = await axios.get(`${shareApi}/api/user/${id}`)
+    const { data } = await axios.get(`${shareApi}/api/user/me/${id}`)
+    console.log(data)
     return {
       props: {
         info: data,
@@ -81,7 +83,7 @@ export async function getServerSideProps(context) {
     console.error('Error fetching products:', error.response ? error.response.data : error.message);
     return {
       props: {
-        info: [],
+        info: {},
       },
     };
   }
