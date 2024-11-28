@@ -35,7 +35,7 @@ export default function SendMail({ data }) {
   }
   return (
     <div
-      className='h-screen p-4 overflow-y-auto bg-gradient-to-t from-purple-100 to-purple-200 font-baishakh'
+      className='h-screen p-4 overflow-y-auto font-baishakh'
     >
       <Head>
         <title>{`@${data?.user?.username} is on Chithi Pathao`}</title>

@@ -7,7 +7,7 @@ import Head from "next/head";
 export default function Home() {
   return (
     <div
-      className="h-screen flex justify-center items-center bg-black text-white font-baishakh"
+      className="h-screen flex justify-center items-center font-baishakh"
     >
       <Head>
         <title>Chithi-pathao - পরিচয়বিহীন চিঠি</title>
@@ -26,18 +26,18 @@ export default function Home() {
           />
         </div>
         <h1 className="pt-4 text-4xl">চিঠি পাঠাও</h1>
-        <p className="text-gray-200">তোমার বন্ধুদের কাছ থেকে বেনামী চিঠি গ্রহন কর</p>
+        <p className="text-gray-600">তোমার বন্ধুদের কাছ থেকে বেনামী চিঠি গ্রহন কর</p>
         <div
-          className="flex items-center space-x-4"
+          className="flex items-center space-x-4 text-white"
         >
-          <Link href=''>
+          <a href='https://www.facebook.com/robiulawal688/' target="_blank">
             <button
-              className="blok flex items-center space-x-1 px-2 py-1 rounded-md bg-gray-500 shadow-md shadow-gray-500"
+              className="blok flex items-center space-x-1 px-2 py-1 rounded-md bg-gray-500 shadow-md shadow-gray-400"
             >
               <SlSocialFacebook/>
               <span>ফেইসবুক পেইজ</span>
             </button>
-          </Link>
+          </a>
           <Link href='/signup'>
             <button
               className="flex items-center space-x-1 px-2 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 shadow-lg shadow-purple-600"
@@ -48,13 +48,13 @@ export default function Home() {
           </Link>
         </div>
         <div
-          className="flex items-center text-sm text-gray-400 space-x-1"
+          className="flex items-center text-sm text-gray-500 space-x-1"
         >
-          <Link href=''>
+          <Link href='/terms'>
             <span>ব্যবহার শর্তাবলী</span>
           </Link>
           <span>|</span>
-          <Link href=''>
+          <Link href='/privacy'>
             <span>গোপনীয়তা নীতি</span>
           </Link>
         </div>

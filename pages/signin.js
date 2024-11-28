@@ -1,5 +1,6 @@
 import appStore from '@/store/store'
 import axios from 'axios'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -26,10 +27,13 @@ export default function Signin() {
     
     return (
         <div
-            className='h-screen p-4 flex justify-center items-center overflow-y-auto bg-gradient-to-t from-purple-200 to-purple-300 shadow-lg shadow-purple-500 font-baishakh'
+            className='h-screen p-4 flex justify-center items-center overflow-y-auto font-baishakh'
         >
+            <Head>
+        <title>লগইন - চিঠিবক্স</title>
+      </Head>
             <div
-                className='w-full md:w-1/2 p-4 bg-white rounded-lg space-y-4'
+                className='w-full md:w-4/12 p-4 bg-white rounded-lg space-y-4'
             >
                 <div
                     className='flex flex-col items-center space-y-3'

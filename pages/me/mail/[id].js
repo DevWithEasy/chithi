@@ -6,11 +6,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 export default function Mail({mail}) {
-    const router = useRouter()
-    console.log(mail)
+    
     return (
         <div
-            className='h-screen p-4 overflow-y-auto bg-gradient-to-t from-purple-100 to-purple-200 font-baishakh'
+            className='h-screen p-4 overflow-y-auto font-baishakh'
         >
             <div
                 className='md:w-5/12 mx-auto'

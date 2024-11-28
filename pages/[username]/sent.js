@@ -4,7 +4,7 @@ import { CiMail } from "react-icons/ci";
 export default function Sent() {
   return (
     <div
-      className='h-screen p-4 flex justify-center items-center overflow-y-auto bg-gradient-to-t from-purple-100 to-purple-200 font-baishakh'
+      className='h-screen p-4 flex justify-center items-center overflow-y-auto font-baishakh'
     >
         <div
             className='w-full md:w-5/12 flex flex-col items-center space-y-5'

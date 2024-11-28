@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -5,8 +6,11 @@ import React from 'react'
 export default function NotFound() {
   return (
     <div
-        className='h-screen p-4 flex justify-center items-center overflow-y-auto bg-gradient-to-t from-purple-100 to-purple-200 font-baishakh'
+        className='h-screen p-4 flex justify-center items-center overflow-y-auto font-baishakh'
     >
+        <Head>
+        <title>৪০৪ - এই পাতা খুজে পাওয়া যায়নি।</title>
+      </Head>
         <div
             className='flex flex-col justify-center items-center space-y-5'
         >
