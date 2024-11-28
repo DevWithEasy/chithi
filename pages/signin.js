@@ -16,7 +16,8 @@ export default function Signin() {
         if (!username || !password) return
         try {
             const { data } = await axios.post(`/api/user/signin`, { username, password })
-            if(data){
+            console.log(data)
+            if(data.succes){
                 loged(data.data)
                 router.push(`/me/${data.data._id}`)
             }

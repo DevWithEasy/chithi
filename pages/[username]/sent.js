@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react'
 import { CiMail } from "react-icons/ci";
 
@@ -6,6 +7,9 @@ export default function Sent() {
     <div
       className='h-screen p-4 flex justify-center items-center overflow-y-auto font-baishakh'
     >
+        <Head>
+            <title>সফলভাবে পাঠানো হয়েছে!</title>
+        </Head>
         <div
             className='w-full md:w-5/12 flex flex-col items-center space-y-5'
         >
