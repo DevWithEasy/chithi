@@ -1,10 +1,12 @@
 import appStore from '@/store/store'
+import shareApi from '@/utils/shareApi'
 import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import Cookies from 'js-cookie';
 
 export default function Signin() {
     const [username, setUsername] = useState('')
@@ -15,9 +17,10 @@ export default function Signin() {
     const handleSignin = async () => {
         if (!username || !password) return
         try {
-            const { data } = await axios.post(`/api/user/signin`, { username, password })
+            const { data } = await axios.post(`${shareApi}/api/user/signin`, { username, password })
             console.log(data)
-            if(data.succes){
+            if(data.success){
+                Cookies.set('authToken', data.token, { expires: 1 });
                 loged(data.data)
                 router.push(`/me/${data.data._id}`)
             }

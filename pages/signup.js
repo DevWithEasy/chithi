@@ -1,4 +1,5 @@
 import CheckName from '@/components/CheckName'
+import shareApi from '@/utils/shareApi'
 import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -18,7 +19,7 @@ export default function Signup() {
         setUsername(input)
         try {
             setStatus('loading')
-            const {data} = await axios.get(`/api/user/check?q=${input}`)
+            const {data} = await axios.get(`${shareApi}/api/user/check?q=${input}`)
             setStatus(data.status)
         } catch (error) {
             setStatus('')

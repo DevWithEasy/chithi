@@ -19,7 +19,7 @@ export default function SendMail({ data }) {
   const senMail = async () => {
     try {
       const response = await axios.post(
-        `/api/mail/sent/${data?.user?._id}`,
+        `${shareApi}/api/mail/sent/${data?.user?._id}`,
         {
           content,
           design: selectDesign.id,
@@ -61,67 +61,67 @@ export default function SendMail({ data }) {
         >
           <button
             onClick={() => setSelectFont('font-baishakh')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-baishakh'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-baishakh`}>
             <span>চিঠি</span>
           </button>
           <button
             onClick={() => setSelectFont('font-banglaborno')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-banglaborno'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-banglaborno`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-chainateesa')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-chainateesa'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-chainateesa`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-deyalika')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-deyalika'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-deyalika`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-hostoshoily')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-hostoshoily'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-hostoshoily`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-ichamati')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-ichamati'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-ichamati`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-indibangla')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-indibangla'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-indibangla`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-jmakash')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-jmakash'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-jmakash`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-lipishree')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-lipishree'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-lipishree`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-madina')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-madina'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-madina`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-mainaksign')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-mainaksign'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-mainaksign`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-nakatra')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-nakatra'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-nakatra`}>
             চিঠি
           </button>
           <button
             onClick={() => setSelectFont('font-shaluk')}
-            className='flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-shaluk'>
+            className={`flex justify-center items-center w-12 h-12 bg-white text-lg rounded-full font-shaluk`}>
             চিঠি
           </button>
         </div>
@@ -184,7 +184,7 @@ export async function getServerSideProps(context) {
   const { username } = context.params
   try {
     console.log(`${shareApi}user/check?q=${username}`)
-    const { data } = await axios.get(`${shareApi}api/user/check?q=${username}`)
+    const { data } = await axios.get(`${shareApi}/api/user/check?q=${username}`)
     if (data.status === 'yes') {
       return {
         redirect: {

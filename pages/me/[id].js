@@ -7,14 +7,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-export default function Profile({ initialMails }) {
+export default function Profile({ info }) {
   const [tab, setTab] = useState(0)
-  const [mails, setMails] = useState(initialMails)
+  const [mails, setMails] = useState([])
   const { user } = appStore()
 
   const fetchMails = async () => {
     try {
-      const { data } = await axios.get(`${shareApi}api/mail/${user._id}`)
+      const { data } = await axios.get(`${shareApi}/api/mail/${info._id}`)
       setMails(data)
     } catch (error) {
       console.error('Error fetching mails:', error.response ? error.response.data : error.message);
@@ -71,17 +71,17 @@ export async function getServerSideProps(context) {
   const { id } = context.params
   console.log(id)
   try {
-    const { data } = await axios.get(`${shareApi}api/mail/${id}`)
+    const { data } = await axios.get(`${shareApi}/api/user/${id}`)
     return {
       props: {
-        initialMails: data,
+        info: data,
       },
     };
   } catch (error) {
     console.error('Error fetching products:', error.response ? error.response.data : error.message);
     return {
       props: {
-        initialMails: [],
+        info: [],
       },
     };
   }
