@@ -3,6 +3,7 @@ import TextAreaThree from '@/components/designtextarea/TextAreaThree';
 import TextAreaTwo from '@/components/designtextarea/TextAreaTwo';
 import designs from '@/utils/design';
 import shareApi from '@/utils/shareApi';
+import socket from '@/utils/socket';
 import axios from 'axios';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -26,8 +27,10 @@ export default function SendMail({ data }) {
           font: selectFont
         }
       )
+      console.log(response)
       if(response.data.success){
-        router.push(`/${data?.user?.username}/sent`)
+        socket.emit('sent',data?.user?._id)
+        return router.push(`/${data?.user?.username}/sent`)
       }
     } catch (error) {
       console.log(error)

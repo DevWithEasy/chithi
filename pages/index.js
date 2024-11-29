@@ -38,7 +38,7 @@ export default function Home() {
               <span>ফেইসবুক পেইজ</span>
             </button>
           </a>
-          <Link href='/signup'>
+          <Link href='/signin'>
             <button
               className="flex items-center space-x-1 px-2 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 shadow-lg shadow-purple-600"
             >

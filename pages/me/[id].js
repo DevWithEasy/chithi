@@ -1,16 +1,15 @@
 import MailBox from '@/components/MailBox'
 import Share from '@/components/Share'
-import appStore from '@/store/store'
 import shareApi from '@/utils/shareApi'
+import socket from '@/utils/socket'
 import axios from 'axios'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+
 
 export default function Profile({ info }) {
   const [tab, setTab] = useState(0)
   const [mails, setMails] = useState(info.mails)
-  const { user } = appStore()
 
   const fetchMails = async () => {
     try {
@@ -20,7 +19,30 @@ export default function Profile({ info }) {
       console.error('Error fetching mails:', error.response ? error.response.data : error.message);
     }
   }
+
+  function notifyMe() {
+    if (!("Notification" in window)) {
+      alert("This browser does not support desktop notification");
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          // const notification = new Notification("Hi there!")
+        }
+      });
+    }
+  }
   
+  
+  useEffect(() => {
+    notifyMe()
+    socket.emit('chithibox',info.user._id)
+    socket.on('incoming',data=>{
+      console.log('incoming message',data)
+      console.log(data)
+      new Notification('নতুন চিঠি এসেছে!')
+    })
+  }, [socket,info.user._id])
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
@@ -30,7 +52,6 @@ export default function Profile({ info }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(mails)
   return (
     <div
       className='h-screen overflow-y-auto font-baishakh'
@@ -73,7 +94,6 @@ export async function getServerSideProps(context) {
   const { id } = context.params
   try {
     const { data } = await axios.get(`${shareApi}/api/user/me/${id}`)
-    console.log(data)
     return {
       props: {
         info: data,

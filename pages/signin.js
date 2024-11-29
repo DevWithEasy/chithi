@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Cookies from 'js-cookie';
+import socket from '@/utils/socket'
 
 export default function Signin() {
     const [username, setUsername] = useState('')
