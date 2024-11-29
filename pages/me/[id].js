@@ -41,7 +41,7 @@ export default function Profile({ info }) {
       console.log(data)
       new Notification('নতুন চিঠি এসেছে!')
     })
-  }, [socket,info.user._id])
+  }, [info.user._id])
 
   useEffect(() => {
     const intervalId = setInterval(() => {
