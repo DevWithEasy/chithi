@@ -1,15 +1,15 @@
 import MailBox from '@/components/MailBox'
 import Share from '@/components/Share'
+import Tab from '@/components/Tab'
+import appStore from '@/store/store'
 import shareApi from '@/utils/shareApi'
-import socket from '@/utils/socket'
 import axios from 'axios'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 
 export default function Profile({ info }) {
-  const [tab, setTab] = useState(0)
-  const [mails, setMails] = useState(info.mails)
+  const {tab,mails,setMails} = appStore()
 
   const fetchMails = async () => {
     try {
@@ -31,18 +31,13 @@ export default function Profile({ info }) {
       });
     }
   }
-  
-  
-  useEffect(() => {
-    notifyMe()
-    socket.emit('chithibox',info.user._id)
-    socket.on('incoming',data=>{
-      console.log('incoming message',data)
-      console.log(data)
-      new Notification('নতুন চিঠি এসেছে!')
-    })
-  }, [info.user._id])
 
+  useEffect(()=>{
+    notifyMe()
+    setMails(info.mails)
+  },[info.mails,setMails])
+  
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
@@ -62,20 +57,7 @@ export default function Profile({ info }) {
       <div
         className='md:w-5/12 mx-auto'
       >
-        <div
-          className='flex'
-        >
-          <button
-            onClick={() => setTab(0)}
-            className={`w-full py-2 border-b-2 ${tab !== 0 ? 'border-gray-200' : 'border-purple-500 text-purple-500'}`}
-          >
-            শেয়ার করুন</button>
-          <button
-            onClick={() => setTab(1)}
-            className={`w-full py-2 border-b-2 ${tab !== 1 ? 'border-gray-200' : 'border-purple-500 text-purple-500'}`}
-          >
-            চিঠি বক্স</button>
-        </div>
+        <Tab/>
         <div
           className=''
         >
@@ -100,7 +82,7 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.error('Error fetching products:', error.response ? error.response.data : error.message);
+    console.error('Error fetching mails:', error.response ? error.response.data : error.message);
     return {
       props: {
         info: {},

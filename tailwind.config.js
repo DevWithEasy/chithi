@@ -10,7 +10,8 @@ module.exports = {
       backgroundImage : {
         'design_1' : "url('/images/design_1.png')",
         'design_2' : "url('/images/design_2.png')",
-        'design_3' : "url('/images/design_3.png')"
+        'design_3' : "url('/images/design_3.png')",
+        'typing' : "url('/images/typing.png')"
       },
       fontFamily : {
         baishakh: ['baishakh', 'sans-serif'],
