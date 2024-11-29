@@ -3,6 +3,7 @@ import Share from '@/components/Share'
 import Tab from '@/components/Tab'
 import appStore from '@/store/store'
 import shareApi from '@/utils/shareApi'
+import socket from '@/utils/socket'
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
@@ -35,7 +36,8 @@ export default function Profile({ info }) {
   useEffect(()=>{
     notifyMe()
     setMails(info.mails)
-  },[info.mails,setMails])
+    socket.emit('chithibox',info.user._id)
+  },[info.mails,setMails,info.user._id])
   
   
   useEffect(() => {
