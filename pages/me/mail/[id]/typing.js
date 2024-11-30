@@ -32,7 +32,7 @@ export default function Mail({ mail }) {
                 <title>চিঠি</title>
             </Head>
             <div
-                className='md:w-6/12 mx-auto space-y-5'
+                className='md:w-5/12 mx-auto space-y-5'
             >
                 <div
                     className='flex items-center space-x-2 py-2 border-b border-purple-600'

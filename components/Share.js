@@ -11,13 +11,13 @@ export default function Share() {
   const { user } = appStore()
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(shareApi + user.username)
-      .then(() => { alert('Text copied to clipboard!'); })
+    navigator.clipboard.writeText(shareApi +"/"+ user.username)
+      .then(() => { alert('লিংক কপি হয়েছে!'); })
       .catch(err => {
         console.error('Failed to copy text: ', err);
       })
   }
-  console.log(user)
+  
   return (
     <div
       className="p-4 md:px-0 md:pt-4 space-y-5"
@@ -44,7 +44,7 @@ export default function Share() {
             className="flex items-center space-x-1 text-sm text-gray-500 border p-2 overflow-hidden rounded-lg"
           >
             <IoIosLink />
-            <span>{shareApi}{user.username}</span>
+            <span>{shareApi}/{user.username}</span>
           </button>
           <button
             onClick={copyToClipboard}
