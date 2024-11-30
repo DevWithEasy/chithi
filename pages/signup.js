@@ -19,7 +19,7 @@ export default function Signup() {
         setUsername(input)
         try {
             setStatus('loading')
-            const {data} = await axios.get(`${shareApi}/api/user/check?q=${input}`)
+            const {data} = await axios.get(`/api/user/check?q=${input}`)
             setStatus(data.status)
         } catch (error) {
             setStatus('')

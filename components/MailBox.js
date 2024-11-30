@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
 import ReadMail from './ReadMail';
 import UnreadMail from './UnreadMail';
+import appStore from '@/store/store';
 
-export default function MailBox({mails}) {
+export default function MailBox() {
   const [search,setSearch] = useState('')
-  
+  const {mails} = appStore()
   
   return (
     <div

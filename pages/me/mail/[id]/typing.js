@@ -1,9 +1,6 @@
-import designs from '@/utils/design';
 import shareApi from '@/utils/shareApi';
-import getTextarea from '@/utils/textArea';
 import axios from 'axios';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { IoMdArrowBack } from 'react-icons/io';

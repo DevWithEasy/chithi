@@ -7,25 +7,28 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Cookies from 'js-cookie';
-import socket from '@/utils/socket'
 
 export default function Signin() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const router = useRouter()
     const {loged} = appStore()
+    const [loading, setLoading] = useState(false)
 
     const handleSignin = async () => {
         if (!username || !password) return
+        setLoading(!loading)
         try {
             const { data } = await axios.post(`${shareApi}/api/user/signin`, { username, password })
             if(data.success){
                 Cookies.set('authToken', data.token, { expires: 1 });
                 loged(data.data)
                 router.push(`/me/${data.data._id}`)
+                setLoading(!loading)
             }
         } catch (error) {
             console.log(error)
+            setLoading(!loading)
         }
     }
     
@@ -76,7 +79,7 @@ export default function Signin() {
                     onClick={handleSignin}
                     className="w-full py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl"
                 >
-                    লগ-ইন করুন
+                    {loading ? 'লগ-ইন হচ্ছে...' : 'লগ-ইন করুন'}
                 </button>
                 <div
                     className='flex justify-center space-x-2'

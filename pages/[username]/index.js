@@ -1,3 +1,4 @@
+import TextAreaFour from '@/components/designtextarea/TextAreaFour';
 import TextAreaOne from '@/components/designtextarea/TextAreaOne';
 import TextAreaThree from '@/components/designtextarea/TextAreaThree';
 import TextAreaTwo from '@/components/designtextarea/TextAreaTwo';
@@ -144,6 +145,8 @@ export default function SendMail({ data }) {
                 <TextAreaTwo font={selectFont} content={content} setContent={setContent} /> :
                 selectDesign.id == 3 ?
                   <TextAreaThree font={selectFont} content={content} setContent={setContent} /> :
+                  selectDesign.id == 4 ?
+                  <TextAreaFour font={selectFont} content={content} setContent={setContent} /> :
                   null
 
           }
@@ -187,7 +190,6 @@ export default function SendMail({ data }) {
 export async function getServerSideProps(context) {
   const { username } = context.params
   try {
-    console.log(`${shareApi}user/check?q=${username}`)
     const { data } = await axios.get(`${shareApi}/api/user/check?q=${username}`)
     if (data.status === 'yes') {
       return {

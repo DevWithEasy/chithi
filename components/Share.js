@@ -1,7 +1,6 @@
 'use client'
 import appStore from "@/store/store";
 import shareApi from "@/utils/shareApi";
-import shareClient from "@/utils/shareClient";
 import Link from "next/link";
 import { CiUser } from "react-icons/ci";
 import { FaGooglePlay } from "react-icons/fa6";
@@ -12,13 +11,13 @@ export default function Share() {
   const { user } = appStore()
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(shareClient + user.username)
+    navigator.clipboard.writeText(shareApi + user.username)
       .then(() => { alert('Text copied to clipboard!'); })
       .catch(err => {
         console.error('Failed to copy text: ', err);
       })
   }
-
+  console.log(user)
   return (
     <div
       className="p-4 md:px-0 md:pt-4 space-y-5"
@@ -45,14 +44,14 @@ export default function Share() {
             className="flex items-center space-x-1 text-sm text-gray-500 border p-2 overflow-hidden rounded-lg"
           >
             <IoIosLink />
-            <span>{shareClient}{user.username}</span>
+            <span>{shareApi}{user.username}</span>
           </button>
           <button
             onClick={copyToClipboard}
             className="flex items-center space-x-1 text-sm bg-gray-500 text-white p-2 rounded-lg"
           >
             <IoCopyOutline />
-            <span>কপি করুন</span>
+            <span className="hidden md:inline-block">কপি করুন</span>
           </button>
         </div>
         <p

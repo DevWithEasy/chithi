@@ -3,7 +3,6 @@ import Share from '@/components/Share'
 import Tab from '@/components/Tab'
 import appStore from '@/store/store'
 import shareApi from '@/utils/shareApi'
-import socket from '@/utils/socket'
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
@@ -14,7 +13,7 @@ export default function Profile({ info }) {
 
   const fetchMails = async () => {
     try {
-      const { data } = await axios.get(`${shareApi}/api/mail/me/${info.user._id}`)
+      const { data } = await axios.get(`/api/mail/me/${info.user._id}`)
       setMails(data)
     } catch (error) {
       console.error('Error fetching mails:', error.response ? error.response.data : error.message);
@@ -23,7 +22,7 @@ export default function Profile({ info }) {
 
   function notifyMe() {
     if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification");
+      alert("আপনার ব্রাউজার নোটিফিকেশন সাপোর্ট করে না।");
     } else if (Notification.permission !== "denied") {
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
@@ -36,14 +35,13 @@ export default function Profile({ info }) {
   useEffect(()=>{
     notifyMe()
     setMails(info.mails)
-    socket.emit('chithibox',info.user._id)
-  },[info.mails,setMails,info.user._id])
+  },[info.mails,setMails])
   
   
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
-    }, 1000*60)
+    }, 1000*30)
 
     return () => clearInterval(intervalId)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,7 +64,7 @@ export default function Profile({ info }) {
           {
             tab === 0 ?
               <Share /> :
-              <MailBox mails={mails} />
+              <MailBox />
           }
         </div>
       </div>
