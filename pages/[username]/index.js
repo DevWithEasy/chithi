@@ -17,8 +17,10 @@ export default function SendMail({ data }) {
   const [selectFont, setSelectFont] = useState('font-baishakh')
   const [selectDesign, setSelectDesign] = useState(designs[0])
   const [content, setContent] = useState()
+  const [loading,setLoading] = useState(false)
   const senMail = async () => {
     try {
+      setLoading(!loading)
       const response = await axios.post(
         `${shareApi}/api/mail/sent/${data?.user?._id}`,
         {
@@ -27,23 +29,25 @@ export default function SendMail({ data }) {
           font: selectFont
         }
       )
-      console.log(response)
       if (response.data.success) {
+        setLoading(!loading)
         return router.push(`/${data?.user?.username}/sent`)
       }
+      setLoading(!loading)
     } catch (error) {
+      setLoading(!loading)
       console.log(error)
     }
   }
   return (
     <div
-      className='h-screen p-4 overflow-y-auto font-baishakh'
+      className='h-screen overflow-y-auto font-baishakh'
     >
       <Head>
         <title>{`@${data?.user?.username} is on Chithi Pathao`}</title>
       </Head>
       <div
-        className='md:w-5/12 mx-auto space-y-5'
+        className='md:w-5/12 mx-auto p-4 space-y-5'
       >
         <div
           className='flex items-end space-x-2'
@@ -146,8 +150,8 @@ export default function SendMail({ data }) {
                 selectDesign.id == 3 ?
                   <TextAreaThree font={selectFont} content={content} setContent={setContent} /> :
                   selectDesign.id == 4 ?
-                  <TextAreaFour font={selectFont} content={content} setContent={setContent} /> :
-                  null
+                    <TextAreaFour font={selectFont} content={content} setContent={setContent} /> :
+                    null
 
           }
         </div>
@@ -179,7 +183,7 @@ export default function SendMail({ data }) {
             className='flex items-center space-x-1 p-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm rounded-lg shadow-lg shadow-purple-500'
           >
             <IoIosHeart />
-            <span>চিঠি পাঠাও</span>
+            <span>{loading ? 'চিঠি পাঠানো হচ্ছে...' : 'চিঠি পাঠাও'}</span>
           </button>
         </div>
       </div>
@@ -194,7 +198,7 @@ export async function getServerSideProps(context) {
     if (data.status === 'yes') {
       return {
         redirect: {
-          destination: '/not-found',
+          destination: `/user-not-found?q=${username}`,
           permanent: false,
         },
       };

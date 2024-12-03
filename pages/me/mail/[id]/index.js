@@ -12,10 +12,10 @@ import { IoMdArrowBack } from "react-icons/io";
 
 export default function Mail({ mail }) {
   const router = useRouter()
-  const {mails,setMails} = appStore()
+  const { mails, setMails } = appStore()
 
   const updateMail = async (mail) => {
-    if(mail.seen) return
+    if (mail.seen) return
     try {
       const { data } = await axios.put(`/api/mail/update/${mail._id}`)
       setMails(mails.map(m => m._id === id ? data : m))
@@ -26,7 +26,7 @@ export default function Mail({ mail }) {
 
   useEffect(() => {
     updateMail(mail)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mail])
   return (
     <div

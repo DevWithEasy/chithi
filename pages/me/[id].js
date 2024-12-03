@@ -5,16 +5,19 @@ import appStore from '@/store/store'
 import shareApi from '@/utils/shareApi'
 import axios from 'axios'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 
 
 export default function Profile({ info }) {
-  const {tab,mails,setMails} = appStore()
+  const { tab, mails, setMails } = appStore()
 
   const fetchMails = async () => {
     try {
       const { data } = await axios.get(`/api/mail/me/${info.user._id}`)
       setMails(data)
+      if(data.length > mails.length){
+        new Notification('নতুন চিঠি')
+      }
     } catch (error) {
       console.error('Error fetching mails:', error.response ? error.response.data : error.message);
     }
@@ -32,19 +35,19 @@ export default function Profile({ info }) {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     notifyMe()
     setMails(info.mails)
-  },[info.mails,setMails])
-  
-  
+  }, [info.mails, setMails])
+
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
-    }, 1000*30)
+    }, 1000 * 30)
 
     return () => clearInterval(intervalId)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -57,7 +60,7 @@ export default function Profile({ info }) {
       <div
         className='md:w-5/12 mx-auto'
       >
-        <Tab/>
+        <Tab />
         <div
           className=''
         >
