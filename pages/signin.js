@@ -40,7 +40,7 @@ export default function Signin() {
         <title>লগইন - চিঠিবক্স</title>
       </Head>
             <div
-                className='w-full md:w-4/12 p-4 bg-white rounded-lg space-y-4'
+                className='w-full md:w-4/12 p-4 bg-white/70 rounded-lg space-y-4'
             >
                 <div
                     className='flex flex-col items-center space-y-3'

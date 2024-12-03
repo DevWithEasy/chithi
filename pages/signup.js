@@ -4,14 +4,17 @@ import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 export default function Signup() {
+    const router = useRouter()
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
     const [email,setEmail] = useState('')
     const [shortName,setShortName] = useState(false)
     const [status,setStatus] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const checkUsername=async(input)=>{
         if(input.length<5) return setShortName(true)
@@ -30,11 +33,16 @@ export default function Signup() {
     const handleSignup = async() =>{
         if(!username ||!password) return 
         if(status !== 'yes') return
+        setLoading(!loading)
         try {
             const {data} = await axios.post(`/api/user/signup`,{username,password,email})
-            console.log(data)
+            if(data.succes){
+                setLoading(!loading)
+                return router.push(`/signin`)
+            }
+            setLoading(!loading)
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
@@ -46,7 +54,7 @@ export default function Signup() {
         <title>নতুন একাউন্ট করুন</title>
       </Head>
             <div
-                className='w-full md:w-4/12 p-4 bg-white rounded-lg space-y-4'
+                className='w-full md:w-4/12 p-4 bg-white/70 rounded-lg space-y-4'
             >
                 <div
                     className='flex flex-col items-center space-y-3'

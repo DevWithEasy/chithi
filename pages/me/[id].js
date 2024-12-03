@@ -44,7 +44,7 @@ export default function Profile({ info }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchMails();
-    }, 1000 * 30)
+    }, 1000 * 10)
 
     return () => clearInterval(intervalId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
