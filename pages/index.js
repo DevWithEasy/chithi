@@ -10,7 +10,7 @@ export default function Home() {
       className="h-screen flex justify-center items-center font-baishakh"
     >
       <Head>
-        <title>Chithi-pathao - পরিচয়বিহীন চিঠি</title>
+        <title>চিঠিবক্স - পরিচয়বিহীন চিঠি</title>
       </Head>
       <div
         className="flex flex-col items-center space-y-6"

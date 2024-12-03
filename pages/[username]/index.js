@@ -17,7 +17,7 @@ export default function SendMail({ data }) {
   const [selectFont, setSelectFont] = useState('font-baishakh')
   const [selectDesign, setSelectDesign] = useState(designs[0])
   const [content, setContent] = useState()
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const senMail = async () => {
     try {
       setLoading(!loading)
@@ -178,13 +178,17 @@ export default function SendMail({ data }) {
               ))
             }
           </div>
-          <button
-            onClick={senMail}
-            className='flex items-center space-x-1 p-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm rounded-lg shadow-lg shadow-purple-500'
+          <div
+            className='flex justify-end items-center'
           >
-            <IoIosHeart />
-            <span>{loading ? 'চিঠি পাঠানো হচ্ছে...' : 'চিঠি পাঠাও'}</span>
-          </button>
+            <button
+              onClick={senMail}
+              className='flex items-center space-x-1 p-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm rounded-lg shadow-lg shadow-purple-500'
+            >
+              <IoIosHeart />
+              <span>{loading ? 'চিঠি পাঠানো হচ্ছে...' : 'চিঠি পাঠাও'}</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
