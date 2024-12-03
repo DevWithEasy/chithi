@@ -156,7 +156,7 @@ export default function SendMail({ data }) {
           }
         </div>
         <div
-          className='flex justify-between items-center'
+          className='flex flex-col space-y-2 md:space-y-0 md:flex-row md:items-center justify-between'
         >
           <div
             className='flex items-center space-x-3'
